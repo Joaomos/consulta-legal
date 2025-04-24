@@ -1,0 +1,38 @@
+.space-menu-politica {
+    height: 100px;
+}
+
+.politica-main-title {
+    background: none;
+    margin: 20px 0 40px;
+}
+
+.main-section-politica {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    min-width: 99vw;
+}
+
+.politica-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    border: var(--dark-color) 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.politica-content div h4 {
+    font-size: 20px;
+}
+
+.politica-content div p {
+    margin: 20px 0;
+    font-size: 20px;
+}

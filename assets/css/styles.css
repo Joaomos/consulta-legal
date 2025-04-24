@@ -22,6 +22,10 @@
     width: 215px;
 }
 
+.borda-menu {
+    box-shadow: 0 0 4px 1px var(--light-gray-color);
+}
+
 .main-section {
     height: 100vh;
     display: flex;
