@@ -282,8 +282,9 @@ footer h4 img {
     width: 30px;
 }
 
-footer h5 {
+footer h5 a {
     font-size: 15px;
     margin: 0 10px;
     color: var(--gray-color);
+    text-decoration: none;
 }

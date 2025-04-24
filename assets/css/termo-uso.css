@@ -1,0 +1,38 @@
+.space-menu-termo {
+    height: 100px;
+}
+
+.termo-main-title {
+    background: none;
+    margin: 20px 0 40px;
+}
+
+.main-section-termo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    min-width: 99vw;
+}
+
+.termo-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    border: var(--dark-color) 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.termo-content div h4 {
+    font-size: 20px;
+}
+
+.termo-content div p {
+    margin: 20px 0;
+    font-size: 20px;
+}

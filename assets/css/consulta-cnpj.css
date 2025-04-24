@@ -1,5 +1,5 @@
 .space-menu-cnpj {
-    height: 260px;
+    height: 280px;
 }
 
 .consulta-cnpj-main-section {
@@ -94,4 +94,32 @@
     color: var(--background-color);
     font-size: 18px;
     margin-bottom: 30px;
+}
+
+.information-card-first-part-cnae {
+    width: 100%;
+}
+
+.information-card-content-cnae {
+    display: flex;
+}
+
+.information-card-content-cnae h5 {
+    font-size: 18px;
+    margin: 10px 5px 10px 0;
+}
+
+.information-card-content-cnae div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.information-card-content-cnae p {
+    font-size: 18px;
+    margin: 0 0 0 10px;
+}
+
+#text-cnae-principal {
+    margin-top: 10px;
 }
