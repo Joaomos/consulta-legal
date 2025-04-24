@@ -1,5 +1,5 @@
 .space-menu-cnpj {
-    height: 80px;
+    height: 260px;
 }
 
 .consulta-cnpj-main-section {
@@ -65,4 +65,33 @@
 .information-card-content p {
     font-size: 18px;
     margin: 0 0 10px 0;
+}
+
+.btn-nova-consulta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-nova-consulta a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-nova-consulta button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: var(--dark-color) 3px solid;
+    background-color: var(--blue-color);
+    color: var(--background-color);
+    font-size: 18px;
+    margin-bottom: 30px;
 }
