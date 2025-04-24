@@ -1,0 +1,68 @@
+.space-menu-cnpj {
+    height: 80px;
+}
+
+.consulta-cnpj-main-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cnpj-first-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--dark-color) 3px solid;
+    width: 80%;
+    padding: 5px 8px;
+    border-radius: 20px;
+}
+
+.space-between-cards {
+    margin: 20px;
+}
+
+.information-card {
+    width: 81%;
+    border: var(--dark-color) 3px solid;
+    border-radius: 20px;
+    
+}
+
+.information-card h3 {
+    margin: 5px 8px;
+    font-size: 23px;
+}
+
+.information-card-part2 {
+    display: flex;
+    border-top: var(--dark-color) 3px solid;
+    margin-bottom: 5px;
+    background: none;
+}
+
+.information-card-part2 div {
+    margin: 2px 4px;
+    font-size: 18px; 
+}
+
+.information-card-first-part {
+    width: 50%;
+}
+
+.information-card-content {
+    display: flex;
+    align-items: center;
+}
+
+.information-card-content h5 {
+    font-size: 18px;
+    margin: 0 5px 10px 0;
+}
+
+.information-card-content p {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
