@@ -32,7 +32,7 @@
 
                    <div class="input-card"><input type="text" name="codigo de acesso" placeholder="Código de acesso:"></div>
 
-                   <h3 class="btn-buscar-danfe-xml"><a href="#" download><button>Buscar DANFe / XML</button></a></h3>
+                   <h3 class="btn-buscar-danfe-xml"><a onclick="openPopup()" download><button>Buscar DANFe / XML</button></a></h3>
                 </div>
                 
                 <div class="card-danfe-second-part">
@@ -65,6 +65,19 @@
             <h5><a href="politica-privacidade.html">Política de Privacidade</a></h5>
             <h5><a href="contato.html">Contato</a></h5>
     </footer>
+
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+          <span class="close-btn" onclick="closePopup()">&times;</span>
+          <img src="assets/img/DANFe.png" alt="DANFe" style="width: 60px;">
+          <p><strong>Atenção:</strong> DANFe gerado com sucesso</p>
+          <p>Escolha uma das opções abaixo para download da sua NFe.</p>
+          <div>
+              <button onclick="baixarPDF()">Download DANFe PDF</button>
+              <button onclick="baixarXML()">Download arquivo XML</button>
+          </div>
+        </div>
+      </div>
 
     <script src="assets/js/script.js"></script>
 

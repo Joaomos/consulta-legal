@@ -10,8 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    min-width: 100vw;
-    max-width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
     margin: 0 0 10px 0 ;
     position: fixed;
 }
@@ -28,14 +28,15 @@
 
 .main-section {
     height: 100vh;
+    min-width: 100%;
+    max-width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
 .space-menu {
-    height: 20px;
+    height: 100px;
 }
 
 .main-title {
@@ -123,6 +124,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .btn-buscar-danfe-xml a {
@@ -131,6 +133,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-buscar-danfe-xml button {
@@ -144,7 +147,7 @@
     background-color: var(--blue-color);
     color: var(--background-color);
     font-size: 18px;
-
+    cursor: pointer;
 }
 
 .card-danfe-second-part {
@@ -185,12 +188,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .btn-selecionar-arquivo a {
     width: 100%;
     display: flex;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-selecionar-arquivo button {
@@ -204,7 +209,7 @@
     background-color: var(--background-color);
     color: var(--black-color);
     font-size: 18px;
-
+    cursor: pointer;
 }
 
 .card-cnpj-first-part h2 {
@@ -249,6 +254,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .btn-consultar-cnpj a {
@@ -257,6 +263,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-consultar-cnpj button {
@@ -270,15 +277,17 @@
     background-color: var(--blue-color);
     color: var(--background-color);
     font-size: 18px;
-
+    cursor: pointer;
 }
 
 footer {
-    max-width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 35px;
+    margin: 20px 0 0 0;
 }
 
 footer h4 img {
@@ -292,3 +301,62 @@ footer h5 a {
     color: var(--gray-color);
     text-decoration: none;
 }
+
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background:  linear-gradient(90deg, rgba(94,138,200,0.5), rgba(4,45,98,0.5));
+    display: none; /* será alterado via JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: var(--background-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 530px;
+    position: relative;
+  }
+
+  .popup-content  img {
+    height: 100px;
+    width: 100px !important;
+  }
+
+  .popup-content p {
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  .popup-content div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+  .popup-content div button {
+    font-size: 17px;
+    width: 40%;
+    height: 40px;
+    margin: 5px 0;
+    border-radius: 10px;
+    background: var(--blue-color);
+    color: var(--white-color);
+    border: var(--dark-color) 3px solid;
+    cursor: pointer;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 0px; right: 15px;
+    font-size: 40px;
+    cursor: pointer;
+  }
