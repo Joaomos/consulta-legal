@@ -316,6 +316,7 @@ footer h5 a {
   
   .popup-content {
     background: var(--background-color);
+    border: var(--dark-color) 3px solid;
     border-radius: 20px;
     padding: 30px;
     text-align: center;

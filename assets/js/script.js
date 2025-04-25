@@ -29,7 +29,20 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
 
-
+document.addEventListener('DOMContentLoaded', function () {
+    const cnpjInput = document.getElementById('cnpj');
+  
+    cnpjInput.addEventListener('input', function () {
+      let valor = cnpjInput.value.replace(/\D/g, '');
+  
+      valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+      valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+      valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
+      valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+  
+      cnpjInput.value = valor;
+    });
+  });
 
 function iniciar() {
     bordaMenu();
