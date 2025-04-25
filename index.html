@@ -30,7 +30,7 @@
                 <div class="card-danfe-first-part">
                    <h2>Consulta DANFe</h2>
 
-                   <div class="input-card"><input class="borda-padrao" type="text" name="codigo de acesso" placeholder="Código de acesso:"></div>
+                   <div class="input-card"><input class="borda-padrao inputDANFE" type="text" name="codigo de acesso" placeholder="Código de acesso:"></div>
 
                    <h3 class="btn-buscar-danfe-xml"><a onclick="openPopup()" download><button>Buscar DANFe / XML</button></a></h3>
                 </div>
@@ -53,8 +53,7 @@
 
                     <div class="input-card consulta-cnpj-input">
                         <input class="inputCNPJ borda-padrao" type="text" name="Consulta CNPJ" placeholder="Digite o CNPJ:" maxlength="18" id="cnpj">
-                        <img src="assets/img/Correto.png" alt="Check img" style="display: none;">
-                        <img src="assets/img/Advertencia.png" alt="Advertencia img" style="display: none;">
+                        <p style="display: none;" id="invalidCNPJ">CNPJ inválido</p>
                     </div>
  
                     <h2 class="btn-consultar-cnpj"><a href="consulta-cnpj.html"><button>Consultar</button></a></h2>

@@ -49,8 +49,7 @@ function validarCNPJ(cnpj) {
 document.addEventListener('DOMContentLoaded', function () {
     const cnpjInput = document.getElementById('cnpj');
     const inputCNPJ = document.querySelector('.inputCNPJ');
-    const checkIcon = cnpjInput.nextElementSibling; 
-    const warnIcon = checkIcon.nextElementSibling;  
+    
 
     cnpjInput.addEventListener('input', function () {
         let valor = cnpjInput.value.replace(/\D/g, '');
@@ -62,26 +61,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         cnpjInput.value = valor;
 
-        // Validação e exibição de ícones
         if (valor.length === 18) {
             const valido = validarCNPJ(valor);
             if (valido) {
-                checkIcon.style.display = "inline";
-                warnIcon.style.display = "none";
                 inputCNPJ.classList.remove("borda-padrao");
                 inputCNPJ.classList.add("borda-verde");
+                document.getElementById('invalidCNPJ').style.display = 'none';
             } else {
-                checkIcon.style.display = "none";
-                warnIcon.style.display = "inline";
                 inputCNPJ.classList.remove("borda-padrao");
                 inputCNPJ.classList.add("borda-vermelha");
+                document.getElementById('invalidCNPJ').style.display = 'flex';
             }
         } else {
-            checkIcon.style.display = "none";
-            warnIcon.style.display = "none";
             inputCNPJ.classList.add("borda-padrao");
             inputCNPJ.classList.remove("borda-vermelha");
             inputCNPJ.classList.remove("borda-verde");
+            document.getElementById('invalidCNPJ').style.display = 'none';
         }
     });
 });

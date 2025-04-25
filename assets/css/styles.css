@@ -238,6 +238,18 @@ input:focus {
     font-size: 35px;
 }
 
+.consulta-cnpj-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consulta-cnpj-input p {
+    width: 80%;
+    color: var(--red-color);
+    font-size: 15px;
+    font-weight: 400;
+}
 
 .input-card {
     width: 100%;
@@ -249,15 +261,6 @@ input:focus {
     width: 82%;
     height: 35px;
     border-radius: 10px;
-}
-
-.consulta-cnpj-input img {
-    position: absolute;
-    background: none;
-    height: 25px;
-    width: 25px;
-    right: 26%;
-    top: 68.5%;
 }
 
 .borda-padrao {
