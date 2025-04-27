@@ -30,7 +30,10 @@
                 <div class="card-danfe-first-part">
                    <h2>Consulta DANFe</h2>
 
-                   <div class="input-card"><input class="borda-padrao inputDANFE" type="text" name="codigo de acesso" placeholder="Código de acesso:"></div>
+                   <div class="input-card consulta-danfe-input">
+                        <input class="borda-padrao inputDANFE inputCodigo" type="text" name="codigo de acesso" maxlength="54" placeholder="Código de acesso:" id="codigoAcesso">
+                        <p style="display: none;" id="invalidCodigo">Código de acesso inválido</p>
+                   </div>
 
                    <h3 class="btn-buscar-danfe-xml"><a onclick="openPopup()" download><button>Buscar DANFe / XML</button></a></h3>
                 </div>
@@ -42,7 +45,8 @@
 
                     <div class="text2-card-danfe">
                         <h2>Gerar DANFe</h2>
-                        <h3 class="btn-selecionar-arquivo"><a href="#" download><button>Selecionar arquivo</button></a></h3>
+                        <h3 class="btn-selecionar-arquivo"><a href="#" download><label for="arquivo">Selecionar arquivo</label></a></h3>
+                        <input type="file" id="arquivo" name="arquivo" style="display: none;">
                     </div>
                 </div>
             </div>

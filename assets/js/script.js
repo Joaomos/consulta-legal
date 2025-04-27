@@ -25,25 +25,56 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
 
-function validarCNPJ(cnpj) {
-    cnpj = cnpj.replace(/[^\d]+/g, '');
+document.addEventListener('DOMContentLoaded', function () {
+    const codigoInput = document.getElementById('codigoAcesso');
+    const inputCodigo = document.querySelector('.inputCodigo');
 
-    if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
+    codigoInput.addEventListener('input', function () {
+        let valor = codigoInput.value.replace(/\D/g, '');
 
-    const calcularDigito = (base, pesos) => {
-        let soma = 0;
-        for (let i = 0; i < pesos.length; i++) {
-            soma += parseInt(base[i]) * pesos[i];
+        valor = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
+        codigoInput.value = valor.trim();
+
+        const valorLimpo = valor.replace(/\s/g, '');
+
+        if (valorLimpo.length === 44) {
+            const valido = validarCodigoAcesso(valorLimpo);
+            if (valido) {
+                inputCodigo.classList.remove("borda-padrao");
+                inputCodigo.classList.add("borda-verde");
+                document.getElementById('invalidCodigo').style.display = 'none';
+            } else {
+                inputCodigo.classList.remove("borda-padrao");
+                inputCodigo.classList.add("borda-vermelha");
+                document.getElementById('invalidCodigo').style.display = 'flex';
+            }
+        } else {
+            inputCodigo.classList.add("borda-padrao");
+            inputCodigo.classList.remove("borda-vermelha");
+            inputCodigo.classList.remove("borda-verde");
+            document.getElementById('invalidCodigo').style.display = 'none';
         }
-        const resto = soma % 11;
-        return resto < 2 ? 0 : 11 - resto;
-    };
+    });
+});
 
-    const base = cnpj.slice(0, 12);
-    const digito1 = calcularDigito(base, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
-    const digito2 = calcularDigito(base + digito1, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
+function validarCodigoAcesso(codigo) {
+    if (!/^\d{44}$/.test(codigo)) return false;
 
-    return cnpj === base + digito1 + digito2;
+    const numeros = codigo.substring(0, 43).split('').map(Number);
+    const dvInformado = parseInt(codigo.charAt(43), 10);
+
+    let peso = 2;
+    let soma = 0;
+
+    for (let i = numeros.length - 1; i >= 0; i--) {
+        soma += numeros[i] * peso;
+        peso = peso < 9 ? peso + 1 : 2;
+    }
+
+    const resto = soma % 11;
+    const dvCalculado = (resto === 0 || resto === 1) ? 0 : 11 - resto;
+
+    return dvInformado === dvCalculado;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -188,6 +188,19 @@ input:focus {
     margin-top: 25px;
 }
 
+.consulta-danfe-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consulta-danfe-input p {
+    width: 80%;
+    color: var(--red-color);
+    font-size: 15px;
+    font-weight: 400;
+}
+
 .btn-selecionar-arquivo {
     width: 100%;
     display: flex;
@@ -202,17 +215,18 @@ input:focus {
     cursor: pointer;
 }
 
-.btn-selecionar-arquivo button {
+.btn-selecionar-arquivo label {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 84%;
-    height: 35px;
+    height: 30px;
     border-radius: 10px;
     border: var(--dark-color) 3px solid;
     background-color: var(--background-color);
     color: var(--black-color);
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 400;
     cursor: pointer;
 }
 
