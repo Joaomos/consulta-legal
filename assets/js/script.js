@@ -77,6 +77,29 @@ function validarCodigoAcesso(codigo) {
     return dvInformado === dvCalculado;
 }
 
+function isValidCNPJ(cnpj) {
+    cnpj = cnpj.replace(/[^\d]/g, '');
+
+    if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
+
+    const calcDV = (base) => {
+      let soma = 0;
+      let peso = base.length - 7;
+      for (let i = 0; i < base.length; i++) {
+        soma += base[i] * peso--;
+        if (peso < 2) peso = 9;
+      }
+      const resto = soma % 11;
+      return resto < 2 ? 0 : 11 - resto;
+    };
+
+    const base = cnpj.substring(0, 12).split('').map(Number);
+    const dv1 = calcDV(base);
+    const dv2 = calcDV([...base, dv1]);
+
+    return dv1 === parseInt(cnpj[12]) && dv2 === parseInt(cnpj[13]);
+  }
+
 document.addEventListener('DOMContentLoaded', function () {
     const cnpjInput = document.getElementById('cnpj');
     const inputCNPJ = document.querySelector('.inputCNPJ');
@@ -92,8 +115,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         cnpjInput.value = valor;
 
+        console.log(valor);
+
         if (valor.length === 18) {
-            const valido = validarCNPJ(valor);
+            const valido = isValidCNPJ(valor);
             if (valido) {
                 inputCNPJ.classList.remove("borda-padrao");
                 inputCNPJ.classList.add("borda-verde");
@@ -111,6 +136,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+function openConsultaCnpj() {
+    const cnpj = document.getElementById("cnpj").value;
+    const cnpjLimpo = cnpj.replace(/[.\-\/]/g, "");
+
+    // Armazena para a próxima página (opcional)
+    localStorage.setItem("cnpjDigitado", cnpjLimpo);
+
+    window.location.href = "consulta-cnpj.html";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cnpjLimpo = localStorage.getItem("cnpjDigitado");
+
+    if (cnpjLimpo) {
+        searchCnpj(cnpjLimpo);
+    }
+});
+
+
+function searchCnpj(cnpjLimpo) {
+    document.getElementById("razao-social").textContent = "Consultando...";
+
+    fetch(`http://localhost:8080/api/cnpj/${cnpjLimpo}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("CNPJ não encontrado ou erro na consulta");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            document.getElementById("razao-social").textContent = data.razaoSocial;
+        })
+        .catch(error => {
+            console.error("Erro ao consultar o CNPJ:", error);
+        });
+}
+
+
 
 function iniciar() {
     bordaMenu();
