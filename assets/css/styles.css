@@ -348,13 +348,13 @@ footer h5 a {
     width: 100vw;
     height: 100vh;
     background:  linear-gradient(90deg, rgba(94,138,200,0.5), rgba(4,45,98,0.5));
-    display: none; /* será alterado via JS */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
   }
   
-  .popup-content {
+.popup-content {
     background: var(--background-color);
     border: var(--dark-color) 3px solid;
     border-radius: 20px;
@@ -363,27 +363,27 @@ footer h5 a {
     width: 90%;
     max-width: 530px;
     position: relative;
-  }
+}
 
-  .popup-content  img {
+.popup-content  img {
     height: 100px;
     width: 100px !important;
-  }
+}
 
-  .popup-content p {
+.popup-content p {
     font-size: 20px;
     margin: 10px;
-  }
+}
 
-  .popup-content div {
+.popup-content div {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 20px 0;
-  }
+}
 
-  .popup-content div button {
+.popup-content div button {
     font-size: 17px;
     width: 40%;
     height: 40px;
@@ -393,11 +393,11 @@ footer h5 a {
     color: var(--white-color);
     border: var(--dark-color) 3px solid;
     cursor: pointer;
-  }
+}
   
-  .close-btn {
+.close-btn {
     position: absolute;
     top: 0px; right: 15px;
     font-size: 40px;
     cursor: pointer;
-  }
+}

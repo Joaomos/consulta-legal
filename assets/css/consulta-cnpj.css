@@ -72,6 +72,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .btn-nova-consulta a {
@@ -80,6 +81,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-nova-consulta button {
@@ -94,6 +96,7 @@
     color: var(--background-color);
     font-size: 18px;
     margin-bottom: 30px;
+    cursor: pointer;    
 }
 
 .information-card-first-part-cnae {
@@ -123,3 +126,89 @@
 #text-cnae-principal {
     margin-top: 10px;
 }
+
+.popup-errocnpj {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background:  linear-gradient(90deg, rgba(94,138,200,0.5), rgba(4,45,98,0.5));
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+.popup-errocnpj .popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--background-color);
+    border: var(--dark-color) 3px solid;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 530px;
+    position: relative;
+}
+
+.popup-consultacnpj .popup-content div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.popup-consultacnpj {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background:  linear-gradient(90deg, rgba(94,138,200,0.5), rgba(4,45,98,0.5));
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+.popup-consultacnpj .popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--background-color);
+    border: var(--dark-color) 3px solid;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 530px;
+    position: relative;
+}
+
+.loading-spinner {
+    border: 8px solid #f3f3f3;        
+    border-top: 8px solid var(--blue-color);     
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 100px auto; 
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.popup-consultacnpj .popup-content div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+}
+

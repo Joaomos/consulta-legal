@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputCNPJ.classList.remove("borda-padrao");
                 inputCNPJ.classList.add("borda-verde");
                 document.getElementById('invalidCNPJ').style.display = 'none';
+                document.getElementById('withoutCNPJ').style.display = 'none';
             } else {
                 inputCNPJ.classList.remove("borda-padrao");
                 inputCNPJ.classList.add("borda-vermelha");
@@ -133,15 +134,29 @@ document.addEventListener('DOMContentLoaded', function () {
             inputCNPJ.classList.remove("borda-vermelha");
             inputCNPJ.classList.remove("borda-verde");
             document.getElementById('invalidCNPJ').style.display = 'none';
+            document.getElementById('withoutCNPJ').style.display = 'none';
         }
     });
 });
+
+function validateCNPJ() {
+    const cnpjInput = document.getElementById('cnpj');
+
+    let valor = cnpjInput.value.replace(/\D/g, '');
+
+    if (valor === "") {
+        document.getElementById('withoutCNPJ').style.display = 'flex';
+        return;
+    } else {
+        openConsultaCnpj();
+    }
+}
 
 function openConsultaCnpj() {
     const cnpj = document.getElementById("cnpj").value;
     const cnpjLimpo = cnpj.replace(/[.\-\/]/g, "");
 
-    // Armazena para a próxima página (opcional)
+    
     localStorage.setItem("cnpjDigitado", cnpjLimpo);
 
     window.location.href = "consulta-cnpj.html";
@@ -157,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function searchCnpj(cnpjLimpo) {
-    document.getElementById("razao-social").textContent = "Consultando...";
 
     fetch(`http://localhost:8080/api/cnpj/${cnpjLimpo}`)
         .then(response => {
@@ -167,8 +181,25 @@ function searchCnpj(cnpjLimpo) {
             return response.json();
         })
         .then(data => {
-            console.log(data);
             document.getElementById("razao-social").textContent = data.razaoSocial;
+            document.getElementById("situacao").textContent = data.situacaoCadastral;
+            document.getElementById("natureza").textContent = data.naturezaJuridica;
+            document.getElementById("email").textContent = data.email;
+            document.getElementById("nome-fantasia").textContent = data.nomeFantasia;
+            document.getElementById("data-abertura").textContent = data.dataAbertura;
+            document.getElementById("capital-social").textContent = data.capitalSocial;
+            document.getElementById("telefone").textContent = data.telefone;
+            document.getElementById("logradouro").textContent = data.logradouro;
+            document.getElementById("complemento").textContent = data.complemento;
+            document.getElementById("municipio").textContent = data.municipio;
+            document.getElementById("cep").textContent = data.cep;
+            document.getElementById("numero").textContent = data.numero;
+            document.getElementById("bairro").textContent = data.bairro;
+            document.getElementById("uf").textContent = data.uf;
+            document.getElementById("text-cnae-principal").textContent = data.cnaePrincipal;
+            document.getElementById("cnae-secundario1").textContent = data.cnaeSecundario1;
+            document.getElementById("cnae-secundario2").textContent = data.cnaeSecundario2;
+            document.getElementById('popup-consultacnpj').style.display = 'none';
         })
         .catch(error => {
             console.error("Erro ao consultar o CNPJ:", error);

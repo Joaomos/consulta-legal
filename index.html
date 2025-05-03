@@ -58,9 +58,10 @@
                     <div class="input-card consulta-cnpj-input">
                         <input class="inputCNPJ borda-padrao" type="text" name="Consulta CNPJ" placeholder="Digite o CNPJ:" maxlength="18" id="cnpj">
                         <p style="display: none;" id="invalidCNPJ">CNPJ inválido</p>
+                        <p style="display: none;" id="withoutCNPJ">Digite um CNPJ</p>
                     </div>
  
-                    <h2 class="btn-consultar-cnpj"><button onclick="openConsultaCnpj()">Consultar</button></h2>
+                    <h2 class="btn-consultar-cnpj"><button onclick="validateCNPJ()">Consultar</button></h2>
                 </div>
             </div>
         </section>
@@ -84,7 +85,7 @@
               <button onclick="baixarXML()">Download arquivo XML</button>
           </div>
         </div>
-      </div>
+    </div>
 
     <script src="assets/js/script.js"></script>
 
