@@ -240,7 +240,47 @@ function searchCnpj(cnpjLimpo) {
         });
 }
 
+async function processXml() {
+    const input = document.getElementById("arquivo");
+    const file = input.files[0];
 
+    if (!file) {
+      alert("Selecione um arquivo XML.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async function(event) {
+      const xmlContent = event.target.result;
+
+      try {
+        const response = await fetch("https://ws.meudanfe.com/api/v1/get/nfe/xmltodanfepdf/API", {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain"
+          },
+          body: xmlContent
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao gerar o DANFe. Verifique o XML enviado.");
+        }
+
+        const base64PDF = await response.text();
+        const pdfBase64Clean = base64PDF.replace(/^"|"$/g, "");
+
+        const pdfWindow = window.open();
+        pdfWindow.document.write(
+          `<iframe width='100%' height='100%' src='data:application/pdf;base64,${pdfBase64Clean}'></iframe>`
+        );
+      } catch (error) {
+        console.error("Erro:", error);
+        alert("Erro ao gerar o DANFe.");
+      }
+    };
+
+    reader.readAsText(file);
+}
 
 function iniciar() {
     bordaMenu();
