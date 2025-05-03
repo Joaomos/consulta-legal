@@ -128,15 +128,15 @@
 }
 
 .popup-errocnpj {
+    display: none;
     position: fixed;
     top: 0; left: 0;
     width: 100vw;
     height: 100vh;
     background:  linear-gradient(90deg, rgba(94,138,200,0.5), rgba(4,45,98,0.5));
-    display: flex; 
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 2000;
   }
   
 .popup-errocnpj .popup-content {
@@ -152,6 +152,18 @@
     width: 90%;
     max-width: 530px;
     position: relative;
+}
+
+.popup-errocnpj .popup-content button {
+    font-size: 17px;
+    width: 40%;
+    height: 40px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background: var(--blue-color);
+    color: var(--white-color);
+    border: var(--dark-color) 3px solid;
+    cursor: pointer;
 }
 
 .popup-consultacnpj .popup-content div {

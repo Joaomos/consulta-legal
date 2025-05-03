@@ -1,3 +1,7 @@
+function openIndexHTML() {
+    window.location.href = "index.html";
+}
+
 function bordaMenu() { 
     const menu = document.querySelector('.header');
 
@@ -139,6 +143,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function formateCapitalSocial(valor) {
+    let [inteiro, decimal] = valorStr.split('.');
+
+    // Garante exatamente duas casas decimais
+    if (!decimal) {
+        decimal = '00';
+    } else if (decimal.length === 1) {
+        decimal += '0';
+    } else if (decimal.length > 2) {
+        decimal = decimal.slice(0, 2);
+    }
+
+    // Insere pontos de milhar na parte inteira
+    let reverso = inteiro.split('').reverse();
+    let partes = [];
+
+    for (let i = 0; i < reverso.length; i += 3) {
+        partes.push(reverso.slice(i, i + 3).reverse().join(''));
+    }
+
+    let inteiroFormatado = partes.reverse().join('.');
+
+    // Retorna valor formatado como moeda brasileira
+    return 'R$ ' + inteiroFormatado + ',' + decimal;
+  }
+
 function validateCNPJ() {
     const cnpjInput = document.getElementById('cnpj');
 
@@ -147,10 +177,13 @@ function validateCNPJ() {
     if (valor === "") {
         document.getElementById('withoutCNPJ').style.display = 'flex';
         return;
+    } else if(!isValidCNPJ(valor)) {
+        return
     } else {
         openConsultaCnpj();
     }
 }
+
 
 function openConsultaCnpj() {
     const cnpj = document.getElementById("cnpj").value;
@@ -176,6 +209,7 @@ function searchCnpj(cnpjLimpo) {
     fetch(`http://localhost:8080/api/cnpj/${cnpjLimpo}`)
         .then(response => {
             if (!response.ok) {
+                document.getElementById('popup-errocnpj').style.display = 'flex';
                 throw new Error("CNPJ não encontrado ou erro na consulta");
             }
             return response.json();
@@ -187,7 +221,7 @@ function searchCnpj(cnpjLimpo) {
             document.getElementById("email").textContent = data.email;
             document.getElementById("nome-fantasia").textContent = data.nomeFantasia;
             document.getElementById("data-abertura").textContent = data.dataAbertura;
-            document.getElementById("capital-social").textContent = data.capitalSocial;
+            document.getElementById("capital-social").textContent = "R$" + data.capitalSocial;
             document.getElementById("telefone").textContent = data.telefone;
             document.getElementById("logradouro").textContent = data.logradouro;
             document.getElementById("complemento").textContent = data.complemento;
