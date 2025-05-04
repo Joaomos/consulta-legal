@@ -221,7 +221,7 @@ function searchCnpj(cnpjLimpo) {
             document.getElementById("email").textContent = data.email;
             document.getElementById("nome-fantasia").textContent = data.nomeFantasia;
             document.getElementById("data-abertura").textContent = data.dataAbertura;
-            document.getElementById("capital-social").textContent = "R$" + data.capitalSocial;
+            document.getElementById("capital-social").textContent = data.capitalSocial;
             document.getElementById("telefone").textContent = data.telefone;
             document.getElementById("logradouro").textContent = data.logradouro;
             document.getElementById("complemento").textContent = data.complemento;
@@ -281,6 +281,86 @@ async function processXml() {
 
     reader.readAsText(file);
 }
+
+const chaveAcesso = 'YOUR_ACCESS_KEY_HERE'; 
+
+async function downloadPDF() {
+    const codigoAcesso = document.getElementById('codigoAcesso').value.trim();
+
+    const url = `https://api.cnpja.com.br/nfe/${codigoAcesso}/pdf`;
+    const token = 'YOUR_TOKEN_HERE';
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar o DANFe em PDF');
+        }
+
+        const blob = await response.blob();
+        const blobURL = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = blobURL;
+        link.download = `DANFe-${codigoAcesso}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(blobURL);
+
+    } catch (error) {
+        alert("Erro ao baixar o DANFe. Verifique o código e tente novamente.");
+        console.error(error);
+    }
+}
+
+async function downloadXML() {
+    const codigoAcesso = document.getElementById('codigoAcesso').value.trim();
+
+    if (codigoAcesso.length !== 44) {
+        alert('Código de acesso inválido. Deve conter 44 dígitos.');
+        return;
+    }
+
+    const url = `https://api.cnpja.com.br/nfe/${codigoAcesso}/xml`; 
+    const token = 'YOUR_TOKEN_HERE'; 
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar o XML da NFe');
+        }
+
+        const blob = await response.blob();
+        const blobURL = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = blobURL;
+        link.download = `NFe-${codigoAcesso}.xml`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(blobURL);
+
+    } catch (error) {
+        alert("Erro ao baixar o XML. Verifique o código e tente novamente.");
+        console.error(error);
+    }
+}
+
 
 function iniciar() {
     bordaMenu();
